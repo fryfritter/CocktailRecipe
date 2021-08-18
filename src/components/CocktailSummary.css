@@ -1,0 +1,33 @@
+.thumbnail_size {
+  width: 50px;
+  height: 50px;
+}
+
+.summary_container {
+  max-width: 150px;
+  width: 150px;
+  margin: 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(216, 155, 155);
+  border-radius: 5px;
+  text-align: left;
+  font-family: cursive;
+  font-size: 12px;
+  color: rgb(216, 155, 155);
+  padding: 5px;
+}
+
+.summary_cocktail-name {
+  padding-left: 20px;
+}
+
+.btn-group__style {
+  text-align: center;
+  font-size: 8px;
+  /* border-radius: 10px 10px 50px 0;  not working */
+  border-width: q–px;
+  border-color: white;
+  border-style: solid;
+  margin: 1px;
+}

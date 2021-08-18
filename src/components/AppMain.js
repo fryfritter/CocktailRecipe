@@ -24,6 +24,7 @@ const AppMain = () => {
       })
       .then((response) => {
         console.log("gotten response");
+        console.log(response.data);
 
         console.log(response.data.drinks);
         setIsLoading(false);
@@ -69,20 +70,15 @@ const AppMain = () => {
       {isLoading && <Loader />}
       <br />
       <br />
-      {!isLoading &&
-        recipes.map((recipe) => (
-          <div>
+      <div class="cocktail-list">
+        {!isLoading &&
+          recipes.map((recipe) => (
             <CocktailSummary
-              imageUrl="test"
-              cocktailName="dd"
+              imageUrl={recipe.strDrinkThumb}
+              cocktailName={recipe.strDrink}
             ></CocktailSummary>
-            ID : this is where i change {recipe.strDrink} <br />
-            Body : {recipe.strInstructions} <br />
-            Body : {recipe.strDrinkThumb} <br />
-            <br />
-            <br />
-          </div>
-        ))}
+          ))}
+      </div>
       {/* {comments.length === 0
         ? `No comments available for postid: ${postId}`
         : ""} */}

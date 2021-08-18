@@ -1,5 +1,5 @@
 .app-style {
-  background-color: grey;
+  /* background-color: grey; */
 }
 
 .btn-group__style {
@@ -10,4 +10,10 @@
   border-color: white;
   border-style: solid;
   margin: 1px;
+}
+
+.cocktail-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
