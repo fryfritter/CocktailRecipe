@@ -7,35 +7,53 @@ import { container, Button, ButtonGroup } from "react-bootstrap";
 import CocktailSummary from "./CocktailSummary";
 
 const AppMain = () => {
-  const [paramValue, setParamVaue] = useState("a");
-  const [recipes, setRecipies] = useState([]);
+  // const [paramValue, setParamVaue] = useState("a");
+  const [recipes, setRecipes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const aToZ = "ABCDEFGHIJKLMNOPQRSTUVYXYZ";
+  const getData = (firstLetterToSearch) => {
+    // don't call API if data already exists ** next version
+    // const cocktailList = recipes.find( ({ firstChar }) => firstChar === paramValue );
 
-  const getData = () => {
-    // don't call API if data already exists
-
-    console.log("get data");
+    //no record for this cocktail, just store first
+    console.log("get data" + firstLetterToSearch);
     axiosInstance
       .get("/search.php", {
         params: {
-          f: paramValue,
+          f: firstLetterToSearch,
         },
       })
-      .then((response) => {
-        console.log("gotten response");
-        console.log(response.data);
+      .then(
+        (response) => {
+          console.log("gotten response");
 
-        console.log(response.data.drinks);
-        setIsLoading(false);
-        setRecipies(response.data.drinks);
-        console.log(recipes);
-      });
+          // console.log(response.data.drinks);
+          setIsLoading(false);
+          setRecipes(response.data.drinks);
+          // console.log(recipes);
+        }
+
+        // console.log("get data");
+        // axiosInstance
+        //   .get("/search.php", {
+        //     params: {
+        //       f: paramValue,
+        //     },
+        //   })
+        //   .then((response) => {
+        //     console.log("gotten response");
+
+        //     // console.log(response.data.drinks);
+        //     setIsLoading(false);
+        //     // setRecipes(response.data.drinks);
+        //     // console.log(recipes);
+        //   }
+      );
   };
 
-  const searchRecipes = () => {
+  const searchRecipes = (firstLetterToSearch) => {
     setIsLoading(true);
-    getData();
+    getData(firstLetterToSearch);
   };
 
   // const handlePostIdChange = (e) => {
@@ -54,6 +72,7 @@ const AppMain = () => {
       <button
         type="button"
         class="btn-group__style btn-dark btn-sm rounded-top border"
+        onClick={() => searchRecipes(char)}
       >
         {char}
       </button>
@@ -65,11 +84,8 @@ const AppMain = () => {
         <ButtonGroup>{printButtonAtoZ()}</ButtonGroup>
       </div>
       Show Recipe <br />
-      {/* <input onChange={handlePostIdChange}></input> */}
-      <Button onClick={searchRecipes}> submit</Button>
+      {/* <Button onClick={searchRecipes}> submit</Button> */}
       {isLoading && <Loader />}
-      <br />
-      <br />
       <div class="cocktail-list">
         {!isLoading &&
           recipes.map((recipe) => (

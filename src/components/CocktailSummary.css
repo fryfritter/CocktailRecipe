@@ -4,7 +4,7 @@
 }
 
 .summary_container {
-  max-width: 150px;
+  max-width: 180px;
   width: 150px;
   margin: 10px;
   border-width: 1px;
@@ -19,7 +19,7 @@
 }
 
 .summary_cocktail-name {
-  padding-left: 20px;
+  padding-left: 1px;
 }
 
 .btn-group__style {
