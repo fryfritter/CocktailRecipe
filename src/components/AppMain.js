@@ -5,8 +5,18 @@ import "./AppMain.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { container, Button, ButtonGroup } from "react-bootstrap";
 import CocktailSummary from "./CocktailSummary";
+import {
+  BrowserRouter,
+  NavLink,
+  Route,
+  Switch,
+  withRouter,
+} from "react-router-dom";
+import RecipesDetails from "./RecipeDetails";
+import { propTypes } from "react-bootstrap/esm/Image";
 
-const AppMain = () => {
+const AppMain = (props) => {
+  console.log(props.location);
   // const [paramValue, setParamVaue] = useState("a");
   const [recipes, setRecipes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -23,42 +33,18 @@ const AppMain = () => {
           f: firstLetterToSearch,
         },
       })
-      .then(
-        (response) => {
-          console.log("gotten response");
+      .then((response) => {
+        console.log("gotten response");
 
-          // console.log(response.data.drinks);
-          setIsLoading(false);
-          setRecipes(response.data.drinks);
-          // console.log(recipes);
-        }
-
-        // console.log("get data");
-        // axiosInstance
-        //   .get("/search.php", {
-        //     params: {
-        //       f: paramValue,
-        //     },
-        //   })
-        //   .then((response) => {
-        //     console.log("gotten response");
-
-        //     // console.log(response.data.drinks);
-        //     setIsLoading(false);
-        //     // setRecipes(response.data.drinks);
-        //     // console.log(recipes);
-        //   }
-      );
+        setIsLoading(false);
+        setRecipes(response.data.drinks);
+      });
   };
 
   const searchRecipes = (firstLetterToSearch) => {
     setIsLoading(true);
     getData(firstLetterToSearch);
   };
-
-  // const handlePostIdChange = (e) => {
-  //   setPostId(e.target.value);
-  // };
 
   const printButtonAtoZ = () => {
     // let currentCharCode = 65;
@@ -84,22 +70,24 @@ const AppMain = () => {
         <ButtonGroup>{printButtonAtoZ()}</ButtonGroup>
       </div>
       Show Recipe <br />
-      {/* <Button onClick={searchRecipes}> submit</Button> */}
+      <Button onClick={() => console.log("clicking the summary")}>
+        {" "}
+        submit
+      </Button>
       {isLoading && <Loader />}
       <div class="cocktail-list">
         {!isLoading &&
           recipes.map((recipe) => (
             <CocktailSummary
+              onClick={() => console.log("clicking the summary")}
               imageUrl={recipe.strDrinkThumb}
               cocktailName={recipe.strDrink}
             ></CocktailSummary>
           ))}
       </div>
-      {/* {comments.length === 0
-        ? `No comments available for postid: ${postId}`
-        : ""} */}
     </div>
   );
 };
+const AppMainWithRouter = withRouter(AppMain);
 
-export default AppMain;
+export default AppMainWithRouter;
