@@ -1,0 +1,13 @@
+.app-style {
+  background-color: grey;
+}
+
+.btn-group__style {
+  text-align: center;
+  font-size: 8px;
+  /* border-radius: 10px 10px 50px 0;  not working */
+  border-width: q–px;
+  border-color: white;
+  border-style: solid;
+  margin: 1px;
+}
