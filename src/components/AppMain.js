@@ -78,11 +78,13 @@ const AppMain = (props) => {
       <div class="cocktail-list">
         {!isLoading &&
           recipes.map((recipe) => (
-            <CocktailSummary
-              onClick={() => console.log("clicking the summary")}
-              imageUrl={recipe.strDrinkThumb}
-              cocktailName={recipe.strDrink}
-            ></CocktailSummary>
+            <div>
+              <CocktailSummary
+                onClick={() => console.log("clicking the summary")}
+                imageUrl={recipe.strDrinkThumb}
+                cocktailName={recipe.strDrink}
+              ></CocktailSummary>
+            </div>
           ))}
       </div>
     </div>

@@ -9,9 +9,9 @@ const CocktailSummary = ({ imageUrl, cocktailName }) => {
     <div border="primary" class="summary_container">
       <row>
         <column>
-          <Image class="thumbnail_size  " src={imageUrl} />
+          <Image className="thumbnail_size" src={imageUrl} />
         </column>
-        <column class="summary_cocktail-name"> {cocktailName}</column>
+        <column className="summary_cocktail-name"> {cocktailName}</column>
       </row>
     </div>
   );
