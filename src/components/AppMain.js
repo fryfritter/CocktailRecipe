@@ -3,14 +3,10 @@ import Loader from "./Loader";
 import axiosInstance from "../utils/axios";
 import "./AppMain.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { container, Button, ButtonGroup } from "react-bootstrap";
+import { Button, ButtonGroup } from "react-bootstrap";
 import CocktailSummary from "./CocktailSummary";
 import {
-  BrowserRouter,
-  NavLink,
-  Route,
-  Switch,
-  withRouter,
+  withRouter
 } from "react-router-dom";
 import RecipesDetails from "./RecipeDetails";
 import { propTypes } from "react-bootstrap/esm/Image";
@@ -79,7 +75,7 @@ const AppMain = (props) => {
         {!isLoading &&
           recipes.map((recipe) => (
             <CocktailSummary
-              onClick={() => console.log("clicking the summary")}
+              id={recipe.idDrink}
               imageUrl={recipe.strDrinkThumb}
               cocktailName={recipe.strDrink}
             ></CocktailSummary>
