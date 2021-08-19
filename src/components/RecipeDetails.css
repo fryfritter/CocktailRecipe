@@ -1,0 +1,37 @@
+.recipe-detail__image {
+  width: 250;
+  height: 250px;
+  margin: 5px;
+  border-radius: 15px;
+}
+
+.recipe-detail__container {
+  max-width: 600;
+  margin-left: auto;
+
+  margin-right: auto;
+  width: 600px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(249, 243, 243);
+  border-radius: 5px;
+  text-align: left;
+  font-family: cursive;
+  font-size: 12px;
+  color: rgb(249, 243, 243);
+  padding: 5px;
+}
+
+.summary_cocktail-name {
+  padding-left: 1px;
+}
+
+.btn-group__style {
+  text-align: center;
+  font-size: 8px;
+  /* border-radius: 10px 10px 50px 0;  not working */
+  border-width: q–px;
+  border-color: white;
+  border-style: solid;
+  margin: 1px;
+}

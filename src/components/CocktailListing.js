@@ -1,21 +1,13 @@
 import React, { useState } from "react";
 import Loader from "./Loader";
 import axiosInstance from "../utils/axios";
-import "./AppMain.css";
+import "./CocktailListing.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { container, Button, ButtonGroup } from "react-bootstrap";
-import CocktailSummary from "./CocktailSummary";
-import {
-  BrowserRouter,
-  NavLink,
-  Route,
-  Switch,
-  withRouter,
-} from "react-router-dom";
-import RecipesDetails from "./RecipeDetails";
-import { propTypes } from "react-bootstrap/esm/Image";
+import { Button, ButtonGroup } from "react-bootstrap";
+import CocktailListCard from "./CocktailListCard";
+import { withRouter } from "react-router-dom";
 
-const AppMain = (props) => {
+const CocktailListing = (props) => {
   console.log(props.location);
   // const [paramValue, setParamVaue] = useState("a");
   const [recipes, setRecipes] = useState([]);
@@ -37,6 +29,8 @@ const AppMain = (props) => {
         console.log("gotten response");
 
         setIsLoading(false);
+        console.log("is loading " + isLoading);
+
         setRecipes(response.data.drinks);
       });
   };
@@ -70,26 +64,20 @@ const AppMain = (props) => {
         <ButtonGroup>{printButtonAtoZ()}</ButtonGroup>
       </div>
       Show Recipe <br />
-      <Button onClick={() => console.log("clicking the summary")}>
-        {" "}
-        submit
-      </Button>
       {isLoading && <Loader />}
       <div class="cocktail-list">
         {!isLoading &&
           recipes.map((recipe) => (
-            <div>
-              <CocktailSummary
-                onClick={() => console.log("clicking the summary")}
-                imageUrl={recipe.strDrinkThumb}
-                cocktailName={recipe.strDrink}
-              ></CocktailSummary>
-            </div>
+            <CocktailListCard
+              id={recipe.idDrink}
+              imageUrl={recipe.strDrinkThumb}
+              cocktailName={recipe.strDrink}
+            ></CocktailListCard>
           ))}
       </div>
     </div>
   );
 };
-const AppMainWithRouter = withRouter(AppMain);
+const CocktailListingWithRouter = withRouter(CocktailListing);
 
-export default AppMainWithRouter;
+export default CocktailListingWithRouter;

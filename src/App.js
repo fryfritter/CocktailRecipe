@@ -1,7 +1,6 @@
 import { BrowserRouter, NavLink, Route, Switch } from "react-router-dom";
 import "./App.css";
-import AppMainWithRouter from "./components/AppMain";
-import AppMain from "./components/AppMain";
+import CocktailListingWithRouter from "./components/CocktailListing";
 import RecipesDetails from "./components/RecipeDetails";
 
 function App() {
@@ -10,10 +9,16 @@ function App() {
       <BrowserRouter>
         <header>
           <NavLink to="/home">Home</NavLink>
-          <NavLink to="/Recipe/abc">Recipe</NavLink>
+          <NavLink to="/recipes">Recipe</NavLink>
+
+          <NavLink
+            to={{ pathname: "/recipes", aboutProps: { drinkId: 15933 } }}
+          >
+            Recipe 2
+          </NavLink>
           <Switch>
-            <Route exact path="/home" component={AppMainWithRouter} />
-            <Route exact path="/Recipe/:drinkId" component={RecipesDetails} />
+            <Route exact path="/home" component={CocktailListingWithRouter} />
+            <Route exact path="/recipes/:drinkId" component={RecipesDetails} />
           </Switch>
         </header>
       </BrowserRouter>
