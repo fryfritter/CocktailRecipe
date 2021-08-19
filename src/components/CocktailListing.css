@@ -2,6 +2,10 @@
   /* background-color: grey; */
 }
 
+.header {
+  color: antiquewhite;
+}
+
 .btn-group__style {
   text-align: center;
   font-size: 8px;

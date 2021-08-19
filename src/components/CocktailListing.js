@@ -59,7 +59,8 @@ const CocktailListing = (props) => {
     ));
   };
   return (
-    <div class="container bg-dark">
+    <div className="container bg-dark">
+      <div className="header">Pick your booze</div>
       <div>
         <ButtonGroup>{printButtonAtoZ()}</ButtonGroup>
       </div>
@@ -67,6 +68,7 @@ const CocktailListing = (props) => {
       {isLoading && <Loader />}
       <div class="cocktail-list">
         {!isLoading &&
+          recipes !== null &&
           recipes.map((recipe) => (
             <CocktailListCard
               id={recipe.idDrink}

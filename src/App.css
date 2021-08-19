@@ -5,6 +5,10 @@
   width: 100%;
 }
 
+.header_link {
+  text-align: left;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
