@@ -4,6 +4,7 @@ import { Loader } from "react-loader-spinner";
 import useStateWithPromise from "../utils/useStateWithPromise";
 import "./RecipeDetails.css";
 import { Container, Grid, Image } from "react-bootstrap";
+import CocktailDetailCard from "./CocktailDetailCard";
 
 const RecipesDetails = (props) => {
   const [cocktailRecipe, setCocktailRecipe] = useStateWithPromise([]);
@@ -46,26 +47,8 @@ const RecipesDetails = (props) => {
         cocktailRecipe.map((recipe) => (
           // <div>{recipe.idDrink + recipe.strDrinkThumb + recipe.strDrink}</div>
           // <div border="primary" className="recipe-detail__container ">
-          <div className="recipe-detail__container">
-            {" "}
-            <Image
-              className="recipe-detail__image"
-              src={recipe.strDrinkThumb}
-            />
-            <div className="recipe-detail">
-              <div className="recipe-detail__cocktail-name">
-                {recipe.strDrink}
-              </div>{" "}
-              Drink with : {recipe.strGlass} <br />
-              What you need :{" "}
-              <ul>
-                <li>{recipe.strIngredient1}</li>
-                <li>{recipe.strIngredient2}</li>
-                <li>{recipe.strIngredient3}</li>
-                <li>{recipe.strIngredient4}</li>
-              </ul>
-              How to prepare : {recipe.strInstructions} <br />
-            </div>
+          <div>
+            <CocktailDetailCard recipeDetail={recipe} />
           </div>
         ))}
     </div>
