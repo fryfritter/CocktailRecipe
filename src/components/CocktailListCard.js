@@ -17,6 +17,7 @@ const Summary = (props) => {
       border="primary"
       className="summary_container"
       onClick={() => displayRecipe(id)}
+      data-testid="cocktail-list-items"
     >
       <row>
         <column>

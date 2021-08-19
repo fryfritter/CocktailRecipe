@@ -3,7 +3,7 @@ import axiosInstance from "../utils/axios";
 import { Loader } from "react-loader-spinner";
 import useStateWithPromise from "../utils/useStateWithPromise";
 import "./RecipeDetails.css";
-import { Button, Container, Grid, Image } from "react-bootstrap";
+import { Button, Container, Grid, Image, InputGroup } from "react-bootstrap";
 import RecipeDetailsCard from "./RecipeDetailsCard";
 import { Carousel } from "bootstrap";
 
@@ -78,11 +78,26 @@ const RecipesDetails = (props) => {
     <div className="bg-dark">
       <div className="header">MYOB - Make Your Own Booze</div>
 
-      <div className="recipe-detail__cocktail-name">
-        {" "}
+      <div>
+        <InputGroup className="recipe-detail__header">
+          <input
+            name="cocktailName"
+            onChange={handleChangeCocktailSearchInput}
+            placeholder="cocktail name here"
+            size="50"
+          />
+          <Button
+            variant="outline-secondary"
+            onClick={() => searchCocktailByName()}
+            id="button-addon2"
+          >
+            show me the recipe
+          </Button>
+        </InputGroup>{" "}
         <input
           name="cocktailName"
           onChange={handleChangeCocktailSearchInput}
+          placeholder="cocktail name here"
         />{" "}
         <br />
         <Button onClick={() => searchCocktailByName()}> Search </Button>

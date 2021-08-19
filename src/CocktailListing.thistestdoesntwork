@@ -1,0 +1,30 @@
+// import { fireEvent, render, screen } from "@testing-library/react";
+// import CocktailListing from "./components/CocktailListing";
+
+// test("should find 3 buttons", () => {
+//   render(<CocktailListing />);
+
+//   const btn_A = screen.getByTestId("search-by-A");
+//   expect(btn_A).toBeInTheDocument();
+
+//   const btn_H = screen.getByTestId("search-by-H");
+//   expect(btn_H).toBeInTheDocument();
+
+//   const btn_Z = screen.getByTestId("search-by-Z");
+//   expect(btn_Z).toBeInTheDocument();
+// });
+
+// // test("should display home when home clicked", () => {
+// //   render(<App />);
+// //   const linkElement_List = screen.getByText("List Cocktails");
+
+// //   fireEvent.click(linkElement_List);
+// //   expect(screen.getByText(/Pick/)).toBeInTheDocument();
+// // });
+// // test("should display MYOB when recipe is clicked", () => {
+// //   render(<App />);
+// //   const linkElement_Recipe = screen.getByText("Cocktails Recipe");
+
+// //   fireEvent.click(linkElement_Recipe);
+// //   expect(screen.getByText(/MYOB/i)).toBeInTheDocument();
+// // });

@@ -12,7 +12,7 @@ const CocktailListing = (props) => {
   // const [paramValue, setParamVaue] = useState("a");
   const [recipes, setRecipes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const aToZ = "ABCDEFGHIJKLMNOPQRSTUVYXYZ";
+  const aToZ = "ABCDEFGHIJKLMNOPQRSTUVYZ";
   const getData = (firstLetterToSearch) => {
     // don't call API if data already exists ** next version
     // const cocktailList = recipes.find( ({ firstChar }) => firstChar === paramValue );
@@ -51,7 +51,9 @@ const CocktailListing = (props) => {
     return aToZ.split("").map((char) => (
       <button
         type="button"
-        class="btn-group__style btn-dark btn-sm rounded-top border"
+        key={char}
+        data-testid={"search-by-" + char}
+        className="btn-group__style btn-dark btn-sm rounded-top border"
         onClick={() => searchRecipes(char)}
       >
         {char}
@@ -66,13 +68,14 @@ const CocktailListing = (props) => {
       </div>
       Show Recipe <br />
       {isLoading && <Loader />}
-      <div class="cocktail-list">
+      <div className="cocktail-list">
         {!isLoading &&
           recipes !== null &&
           recipes.map((recipe) => (
             <CocktailListCard
               id={recipe.idDrink}
               imageUrl={recipe.strDrinkThumb}
+              key={recipe.idDrink}
               cocktailName={recipe.strDrink}
             ></CocktailListCard>
           ))}

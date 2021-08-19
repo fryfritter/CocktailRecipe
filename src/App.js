@@ -17,11 +17,11 @@ function App() {
       <BrowserRouter>
         <header>
           <NavLink to="/home" className="header_link">
-            Home
+            List Cocktails
           </NavLink>
           //
           <NavLink to="/recipes" className="header_link">
-            Recipe
+            Cocktails Recipe
           </NavLink>
           <Switch>
             <Route exact path="/home" component={CocktailListingWithRouter} />
