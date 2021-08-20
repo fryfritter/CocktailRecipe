@@ -8,14 +8,16 @@ import CocktailListCard from "./CocktailListCard";
 import { withRouter } from "react-router-dom";
 
 /**
- For Sharing 
+ For Sharing  
 Screen 1: Cocktail Listing
-1. Dynamic A-Z button
+1. Dynamic A-Z button with testid
 2. Each button click will call API and load the result
 3  Uses a separate component for summary card
+4. Always remember to handle 'empty' array for map
 
 Blocker:
 1. Rendering of A-Z button using while loop doesnt work. Solved by using map function
+2. button colour on hover not obvious. solved by using outline button style
 2. The background color doesnt cover fully (unresolved)
 3. Still can't understand how the passing of drink ID to next page work
 4. css to change the rounder corner for button doesnt work
@@ -60,10 +62,11 @@ const CocktailListing = (props) => {
     // }
     return aToZ.split("").map((char) => (
       <Button
-        type="button"
+        variant="outline-light"
+        size="sm"
         key={char}
         data-testid={"search-by-" + char}
-        className="btn-group__style btn-dark btn-sm rounded-top border"
+        className="btn-group__style  rounded-top border"
         onClick={() => searchRecipes(char)}
       >
         {char}

@@ -17,7 +17,7 @@ Screen 2: Cocktail Listing
 Blocker:
 1. Confusion due to the update value in setState -- Long story
 2. Carousel component throw error. It was due to the import used was from bootstrap instead of react-bootstrap
-2. Unable to do component based TDD as the component require props. 
+2. Unable to do component based TDD as the component require props. New util 'useStateWithPromise'?
  */
 
 const RecipesDetails = (props) => {

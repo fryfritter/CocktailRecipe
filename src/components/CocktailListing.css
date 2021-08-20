@@ -5,9 +5,7 @@
 .header {
   color: antiquewhite;
 }
-.btn-dark:hover {
-  color: white;
-}
+
 .btn-group__style {
   text-align: center;
   font-size: 12px;
@@ -17,7 +15,9 @@
   border-style: solid;
   margin: 1px;
 }
-
+.btn-dark:hover {
+  background-color: white;
+}
 .cocktail-list {
   display: flex;
   flex-direction: row;
