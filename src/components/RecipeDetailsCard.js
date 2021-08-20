@@ -19,7 +19,13 @@ const CocktailDetailsCard = ({ recipeDetail }) => {
         What you need :{" "}
         <ul>
           {checkIngredient(recipeDetail).map((ingredient) => (
-            <li>{ingredient}</li>
+            <li>
+              <Image
+                className="recipe-detail__ingredient_image"
+                src={`http://www.thecocktaildb.com/images/ingredients/${ingredient}.png`}
+              />
+              {ingredient}
+            </li>
           ))}
         </ul>
         How to prepare :

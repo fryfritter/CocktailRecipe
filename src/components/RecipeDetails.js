@@ -12,7 +12,8 @@ Screen 2: Cocktail Listing
 1. Will try to fecth data on load (useEffect)
 2. if drinkId is passed, retrieve only 1 drink. 
   Else allow user input to search
-3  Uses a separate component for detail card
+3. Uses a separate component for detail card
+4. ingredients are not given in proper format thus need special handling
 
 Blocker:
 1. Confusion due to the update value in setState -- Long story

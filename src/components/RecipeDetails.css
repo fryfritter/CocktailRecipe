@@ -4,6 +4,10 @@
   margin: 5px;
   border-radius: 15px;
 }
+.recipe-detail__ingredient_image {
+  width: 20;
+  height: 20px;
+}
 
 .recipe-detail__container {
   display: flex;
