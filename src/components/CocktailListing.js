@@ -26,11 +26,7 @@ const CocktailListing = (props) => {
         },
       })
       .then((response) => {
-        console.log("gotten response");
-
         setIsLoading(false);
-        console.log("is loading " + isLoading);
-
         setRecipes(response.data.drinks);
       });
   };

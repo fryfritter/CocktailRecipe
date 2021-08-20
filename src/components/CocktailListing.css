@@ -5,7 +5,9 @@
 .header {
   color: antiquewhite;
 }
-
+.btn-dark:hover {
+  color: white;
+}
 .btn-group__style {
   text-align: center;
   font-size: 8px;

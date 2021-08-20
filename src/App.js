@@ -13,7 +13,9 @@ function App() {
           <Container>
             <Nav className="me-auto">
               <Nav.Link href="/home">Homes</Nav.Link>
-              <Nav.Link href="/list">Cocktails Selection</Nav.Link>
+              <Nav.Link href="/list" data-testid="ti_nav_cocktailselection">
+                Cocktails Selection
+              </Nav.Link>
               <Nav.Link href="/recipes">Cocktails Recipe</Nav.Link>
             </Nav>
           </Container>
@@ -22,6 +24,8 @@ function App() {
       </div>
       <BrowserRouter>
         <header />
+        <NavLink to="/list" data-testid="ti_cocktailselection"></NavLink>
+        <NavLink to="/recipes" data-testid="ti_RecipeDetails"></NavLink>
 
         <Switch>
           <Route exact path="/home" component={Home} />

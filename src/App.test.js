@@ -1,42 +1,42 @@
-import {
-  fireEvent,
-  render,
-  screen,
-  waitForElement,
-} from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import App from "./App";
 import { waitFor } from "./utils/CustomWaitFor";
 
 test("1. should find 2 links from main page", () => {
   render(<App />);
-  const linkElement_List = screen.getByText("List Cocktails");
+  const linkElement_List = screen.getByText("Cocktails Selection");
   expect(linkElement_List).toBeInTheDocument();
 
   const linkElement_Recipe = screen.getByText("Cocktails Recipe");
   expect(linkElement_Recipe).toBeInTheDocument();
 });
 
-test("2. should display home when home clicked", () => {
+test("2. should display Pick when home clicked", () => {
   render(<App />);
-  const linkElement_List = screen.getByText("List Cocktails");
+  const navCocktailSelection = screen.getByTestId("ti_cocktailselection");
+  expect(navCocktailSelection).toBeInTheDocument();
 
-  fireEvent.click(linkElement_List);
-  expect(screen.getByText(/Pick/)).toBeInTheDocument();
+  fireEvent.click(navCocktailSelection);
+
+  let cocktailsSelectionText = screen.getByText(/Pick/);
+
+  expect(cocktailsSelectionText).toBeInTheDocument();
 });
 
 test("3. should display MYOB when recipe is clicked", () => {
   render(<App />);
-  const linkElement_Recipe = screen.getByText("Cocktails Recipe");
+  const navCocktailRecipe = screen.getByTestId("ti_RecipeDetails");
 
-  fireEvent.click(linkElement_Recipe);
+  fireEvent.click(navCocktailRecipe);
   expect(screen.getByText(/MYOB/i)).toBeInTheDocument();
 });
 
 test("4. should find 3 buttons in list cocktails", () => {
   render(<App />);
-  const linkElement_List = screen.getByText("List Cocktails");
+  const navCocktailSelection = screen.getByTestId("ti_cocktailselection");
 
-  fireEvent.click(linkElement_List);
+  fireEvent.click(navCocktailSelection);
 
   const btn_A = screen.getByTestId("search-by-A");
   expect(btn_A).toBeInTheDocument();
@@ -50,9 +50,8 @@ test("4. should find 3 buttons in list cocktails", () => {
 
 test("5. should fetch responses when Z button is clicked", async () => {
   render(<App />);
-  const linkElement_List = screen.getByText("List Cocktails");
-
-  fireEvent.click(linkElement_List);
+  const navCocktailSelection = screen.getByTestId("ti_cocktailselection");
+  fireEvent.click(navCocktailSelection);
 
   const btn_Z = screen.getByTestId("search-by-Z");
   fireEvent.click(btn_Z);
@@ -65,9 +64,10 @@ test("5. should fetch responses when Z button is clicked", async () => {
 
 test("6. should go to detail page when first cocktail is clicked", async () => {
   render(<App />);
-  const linkElement_List = screen.getByText("List Cocktails");
 
-  fireEvent.click(linkElement_List);
+  const navCocktailSelection = screen.getByTestId("ti_cocktailselection");
+
+  fireEvent.click(navCocktailSelection);
 
   const btn_Z = screen.getByTestId("search-by-Z");
   fireEvent.click(btn_Z);

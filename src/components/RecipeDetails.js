@@ -23,11 +23,10 @@ const RecipesDetails = (props) => {
     //**retain the console log for sharing */
 
     console.log("i am in recipe details " + params.drinkId);
-    setIsLoading(true);
-    console.log("is loading " + isLoading);
-    console.log("param id is" + params.drinkId);
 
     if (params.drinkId !== undefined) {
+      setIsLoading(true);
+      console.log("is loading " + isLoading);
       axiosInstance
         .get("/lookup.php", {
           params: {
@@ -114,7 +113,10 @@ const RecipesDetails = (props) => {
       {isLoading && <Loader />}
 
       <div>{params.drinkId === undefined && searchComponent()}</div>
-      {!isLoading && cocktailRecipe !== undefined && renderRecipeCards()}
+      {!isLoading &&
+        cocktailRecipe !== null &&
+        cocktailRecipe.length !== 0 &&
+        renderRecipeCards()}
     </div>
   );
 };
