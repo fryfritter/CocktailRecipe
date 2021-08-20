@@ -94,13 +94,6 @@ const RecipesDetails = (props) => {
             show me the recipe
           </Button>
         </InputGroup>{" "}
-        <input
-          name="cocktailName"
-          onChange={handleChangeCocktailSearchInput}
-          placeholder="cocktail name here"
-        />{" "}
-        <br />
-        <Button onClick={() => searchCocktailByName()}> Search </Button>
       </div>
 
       {!isLoading &&

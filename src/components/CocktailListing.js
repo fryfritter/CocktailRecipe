@@ -62,7 +62,7 @@ const CocktailListing = (props) => {
   };
   return (
     <div className="container bg-dark">
-      <div className="header">Pick your booze</div>
+      <div className="header">Pick your poison :)</div>
       <div>
         <ButtonGroup>{printButtonAtoZ()}</ButtonGroup>
       </div>

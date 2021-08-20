@@ -17,6 +17,8 @@
   border-color: rgb(249, 243, 243);
   border-radius: 5px;
   padding: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 .recipe-detail {
   flex-direction: row;
