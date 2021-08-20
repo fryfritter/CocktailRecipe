@@ -1,4 +1,4 @@
-import { Container, Image, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 import { BrowserRouter, NavLink, Route, Switch } from "react-router-dom";
 import "./App.css";
 import CocktailListingWithRouter from "./components/CocktailListing";

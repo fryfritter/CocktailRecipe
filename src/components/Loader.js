@@ -1,6 +1,5 @@
 import React from "react";
 import { Spinner } from "react-bootstrap";
-import Loader from "react-loader-spinner";
 
 export default () => {
   return (
