@@ -9,21 +9,10 @@ function App() {
   return (
     <div className="App">
       <div>
-        {/* <NavLink to="/home" className="header_link">
-            Home
-          </NavLink>{" "}
-          //
-          <NavLink to="/list" className="header_link">
-            List Cocktails
-          </NavLink>
-          //
-          <NavLink to="/recipes" className="header_link">
-            Cocktails Recipe
-          </NavLink> */}
         <Navbar bg="dark" variant="dark">
           <Container>
             <Nav className="me-auto">
-              <Nav.Link href="/home">Home</Nav.Link>
+              <Nav.Link href="/home">Homes</Nav.Link>
               <Nav.Link href="/list">Cocktails Selection</Nav.Link>
               <Nav.Link href="/recipes">Cocktails Recipe</Nav.Link>
             </Nav>

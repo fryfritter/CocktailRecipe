@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import axiosInstance from "../utils/axios";
-import { Loader } from "react-loader-spinner";
 import useStateWithPromise from "../utils/useStateWithPromise";
 import "./RecipeDetails.css";
-import { Button, Container, Grid, Image, InputGroup } from "react-bootstrap";
+import { Button, Carousel, InputGroup } from "react-bootstrap";
 import RecipeDetailsCard from "./RecipeDetailsCard";
-import { Carousel } from "bootstrap";
+import Loader from "./Loader";
 
 const RecipesDetails = (props) => {
   const [cocktailRecipe, setCocktailRecipe] = useStateWithPromise([]);
@@ -16,7 +15,13 @@ const RecipesDetails = (props) => {
     match: { params },
   } = props;
 
+  useEffect(() => {
+    loadData(); //automatically load data 'once' when the component is rendered
+  }, []);
+
   const loadData = () => {
+    //**retain the console log for sharing */
+
     console.log("i am in recipe details " + params.drinkId);
     setIsLoading(true);
     console.log("is loading " + isLoading);
@@ -29,7 +34,6 @@ const RecipesDetails = (props) => {
             i: params.drinkId,
           },
         })
-        //   .then((response) => response.json()) // convert data to json
         .then((response) => {
           console.log("gotten response");
           console.log(response.data.drinks);
@@ -43,14 +47,11 @@ const RecipesDetails = (props) => {
     }
   };
 
-  useEffect(() => {
-    loadData();
-  }, []);
-
   const handleChangeCocktailSearchInput = (e) => {
     console.log(e.target.value);
     setCocktailNameToSearch(e.target.value);
   };
+
   const searchCocktailByName = () => {
     console.log("search by name" + cocktailNameToSearch);
     setIsLoading(true);
@@ -61,7 +62,6 @@ const RecipesDetails = (props) => {
           s: cocktailNameToSearch,
         },
       })
-      //   .then((response) => response.json()) // convert data to json
       .then((response) => {
         console.log("gotten response");
         console.log(response.data.drinks);
@@ -74,35 +74,47 @@ const RecipesDetails = (props) => {
       });
   };
 
+  const searchComponent = () => {
+    return (
+      <InputGroup className="recipe-detail__header">
+        <input
+          name="cocktailName"
+          onChange={handleChangeCocktailSearchInput}
+          placeholder="cocktail name here"
+          size="50"
+        />
+        <Button
+          variant="outline-secondary"
+          onClick={() => searchCocktailByName()}
+          id="button-addon2"
+        >
+          show me the recipe
+        </Button>
+      </InputGroup>
+    );
+  };
+
+  const renderRecipeCards = () => {
+    return (
+      <Carousel fade>
+        {cocktailRecipe.map((recipe) => (
+          <Carousel.Item interval={3000}>
+            <div>
+              <RecipeDetailsCard recipeDetail={recipe} />
+            </div>
+          </Carousel.Item>
+        ))}
+      </Carousel>
+    );
+  };
+
   return (
     <div className="bg-dark">
       <div className="header">MYOB - Make Your Own Booze</div>
+      {isLoading && <Loader />}
 
-      <div>
-        <InputGroup className="recipe-detail__header">
-          <input
-            name="cocktailName"
-            onChange={handleChangeCocktailSearchInput}
-            placeholder="cocktail name here"
-            size="50"
-          />
-          <Button
-            variant="outline-secondary"
-            onClick={() => searchCocktailByName()}
-            id="button-addon2"
-          >
-            show me the recipe
-          </Button>
-        </InputGroup>{" "}
-      </div>
-
-      {!isLoading &&
-        cocktailRecipe !== undefined &&
-        cocktailRecipe.map((recipe) => (
-          <div>
-            <RecipeDetailsCard recipeDetail={recipe} />
-          </div>
-        ))}
+      <div>{params.drinkId === undefined && searchComponent()}</div>
+      {!isLoading && cocktailRecipe !== undefined && renderRecipeCards()}
     </div>
   );
 };
