@@ -1,7 +1,16 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import App from "./App";
 import { waitFor } from "./utils/CustomWaitFor";
+
+/**
+Testing
+1. Possible to extend the 'waitfor' timeout (default 1 sec)
+2. Not all component click accept fireEvent.click()
+   e.g. it works for NavLink but not Nav.link
+
+Blocker:
+1. component based testing for component 'withRouter'
+*/
 
 test("1. should find 2 links from main page", () => {
   render(<App />);

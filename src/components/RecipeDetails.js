@@ -6,6 +6,20 @@ import { Button, Carousel, InputGroup } from "react-bootstrap";
 import RecipeDetailsCard from "./RecipeDetailsCard";
 import Loader from "./Loader";
 
+/**
+For Sharing 
+Screen 2: Cocktail Listing
+1. Will try to fecth data on load (useEffect)
+2. if drinkId is passed, retrieve only 1 drink. 
+  Else allow user input to search
+3  Uses a separate component for detail card
+
+Blocker:
+1. Confusion due to the update value in setState -- Long story
+2. Carousel component throw error. It was due to the import used was from bootstrap instead of react-bootstrap
+2. Unable to do component based TDD as the component require props. 
+ */
+
 const RecipesDetails = (props) => {
   const [cocktailRecipe, setCocktailRecipe] = useStateWithPromise([]);
   const [cocktailNameToSearch, setCocktailNameToSearch] =
@@ -16,10 +30,10 @@ const RecipesDetails = (props) => {
   } = props;
 
   useEffect(() => {
-    loadData(); //automatically load data 'once' when the component is rendered
+    loadDataOnFirstRender(); //automatically load data 'once' when the component is rendered
   }, []);
 
-  const loadData = () => {
+  const loadDataOnFirstRender = () => {
     //**retain the console log for sharing */
 
     console.log("i am in recipe details " + params.drinkId);

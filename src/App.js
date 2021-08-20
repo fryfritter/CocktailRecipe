@@ -4,6 +4,14 @@ import "./App.css";
 import CocktailListingWithRouter from "./components/CocktailListing";
 import RecipesDetails from "./components/RecipeDetails";
 import Home from "./components/Home";
+/**
+ For Sharing 
+
+Top Nav Bar
+blocker : Unable to replace [navlink] with [Nav.Link] within Router component
+Solution : place [Nav.link] out of the router tag (it still work)
+
+ */
 
 function App() {
   return (
@@ -12,7 +20,7 @@ function App() {
         <Navbar bg="dark" variant="dark">
           <Container>
             <Nav className="me-auto">
-              <Nav.Link href="/home">Homes</Nav.Link>
+              <Nav.Link href="/home">Home</Nav.Link>
               <Nav.Link href="/list" data-testid="ti_nav_cocktailselection">
                 Cocktails Selection
               </Nav.Link>

@@ -7,6 +7,20 @@ import { Button, ButtonGroup } from "react-bootstrap";
 import CocktailListCard from "./CocktailListCard";
 import { withRouter } from "react-router-dom";
 
+/**
+ For Sharing 
+Screen 1: Cocktail Listing
+1. Dynamic A-Z button
+2. Each button click will call API and load the result
+3  Uses a separate component for summary card
+
+Blocker:
+1. Rendering of A-Z button using while loop doesnt work. Solved by using map function
+2. The background color doesnt cover fully (unresolved)
+3. Still can't understand how the passing of drink ID to next page work
+4. css to change the rounder corner for button doesnt work
+ */
+
 const CocktailListing = (props) => {
   console.log(props.location);
   // const [paramValue, setParamVaue] = useState("a");
@@ -16,8 +30,8 @@ const CocktailListing = (props) => {
   const getData = (firstLetterToSearch) => {
     // don't call API if data already exists ** next version
     // const cocktailList = recipes.find( ({ firstChar }) => firstChar === paramValue );
+    //no record for this cocktails, retrieve and store in state
 
-    //no record for this cocktail, just store first
     console.log("get data" + firstLetterToSearch);
     axiosInstance
       .get("/search.php", {
@@ -45,7 +59,7 @@ const CocktailListing = (props) => {
     //   currentCharCode++;
     // }
     return aToZ.split("").map((char) => (
-      <button
+      <Button
         type="button"
         key={char}
         data-testid={"search-by-" + char}
@@ -53,7 +67,7 @@ const CocktailListing = (props) => {
         onClick={() => searchRecipes(char)}
       >
         {char}
-      </button>
+      </Button>
     ));
   };
   return (
